@@ -1,0 +1,357 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sowjanya Beautician | Beauty & Makeup Studio</title>
+  <meta name="description" content="Sowjanya Beautician in Macherla — bridal makeup, party makeup, hair styling, skincare, saree draping and mehendi services." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #b96f7b;
+      --deep-rose: #7c3f50;
+      --blush: #f9e7e9;
+      --cream: #fffaf6;
+      --gold: #c69b55;
+      --ink: #34262b;
+      --muted: #77666b;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(91, 46, 61, .12);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { width: 100%; display: block; object-fit: cover; }
+
+    .container { width: min(1120px, 92%); margin: auto; }
+    .section { padding: 100px 0; }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--rose);
+      margin-bottom: 12px;
+    }
+    h1, h2, h3 { font-family: "Cormorant Garamond", serif; line-height: 1; }
+    h2 { font-size: clamp(2.5rem, 5vw, 4.3rem); }
+    .section-head { max-width: 650px; margin-bottom: 45px; }
+    .section-head p { color: var(--muted); margin-top: 18px; }
+
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      background: rgba(255,250,246,.86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(198,155,85,.15);
+    }
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--deep-rose);
+    }
+    .logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 25px; align-items: center; font-size: .9rem; }
+    .nav-links a:hover { color: var(--rose); }
+    .menu-btn { display: none; border: 0; background: none; font-size: 1.6rem; }
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 0 90px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(255,250,246,.96) 0%, rgba(255,250,246,.78) 46%, rgba(255,250,246,.12) 100%),
+        url("https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=1800&q=85") center/cover;
+    }
+    .hero-content { max-width: 700px; margin-right: auto; }
+    .hero h1 { font-size: clamp(4rem, 10vw, 8rem); color: var(--deep-rose); margin-bottom: 24px; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { font-size: 1.15rem; color: var(--muted); max-width: 520px; margin-bottom: 32px; }
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 23px; border-radius: 999px; font-weight: 700;
+      transition: .3s ease; border: 1px solid transparent; cursor: pointer;
+    }
+    .btn-primary { background: var(--deep-rose); color: white; box-shadow: 0 10px 25px rgba(124,63,80,.25); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(124,63,80,.3); }
+    .btn-outline { border-color: var(--gold); color: var(--deep-rose); background: rgba(255,255,255,.5); }
+    .btn-outline:hover { background: var(--blush); transform: translateY(-3px); }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 65px; align-items: center; }
+    .about-image { border-radius: 120px 24px 24px 24px; overflow: hidden; box-shadow: var(--shadow); }
+    .about-image img { height: 600px; }
+    .about-copy p { color: var(--muted); margin: 20px 0; }
+    .signature { font-family: "Cormorant Garamond", serif; font-size: 2rem; color: var(--rose); }
+
+    .services { background: var(--blush); }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card {
+      background: rgba(255,255,255,.75); padding: 30px; border-radius: var(--radius);
+      border: 1px solid rgba(198,155,85,.18); transition: .3s ease;
+    }
+    .card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+    .icon { font-size: 2rem; margin-bottom: 20px; }
+    .card h3 { font-size: 1.8rem; color: var(--deep-rose); margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: .95rem; }
+
+    .gallery { display: grid; grid-template-columns: 1.2fr .8fr .8fr; grid-auto-rows: 240px; gap: 16px; }
+    .gallery div { overflow: hidden; border-radius: 20px; }
+    .gallery div:first-child { grid-row: span 2; }
+    .gallery img { height: 100%; transition: transform .5s ease; }
+    .gallery div:hover img { transform: scale(1.06); }
+
+    .why { background: #fff; }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; align-items: center; }
+    .benefits { display: grid; gap: 18px; }
+    .benefit { display: flex; gap: 16px; align-items: flex-start; }
+    .check { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: var(--blush); color: var(--rose); flex: 0 0 auto; }
+    .benefit h3 { font-size: 1.5rem; margin-bottom: 3px; }
+    .benefit p { color: var(--muted); }
+
+    .testimonials { background: var(--deep-rose); color: white; }
+    .testimonials .eyebrow { color: #f1cda0; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .quote { padding: 28px; border: 1px solid rgba(255,255,255,.18); border-radius: var(--radius); background: rgba(255,255,255,.08); }
+    .quote p { font-family: "Cormorant Garamond", serif; font-size: 1.6rem; line-height: 1.2; margin-bottom: 20px; }
+    .quote small { color: #f1cda0; }
+
+    .booking-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 55px; align-items: start; }
+    .contact-list { display: grid; gap: 18px; margin-top: 30px; }
+    .contact-item { display: flex; gap: 14px; align-items: center; }
+    .contact-item strong { display: block; }
+    .contact-item span { color: var(--muted); font-size: .9rem; }
+    form { background: white; padding: 32px; border-radius: var(--radius); box-shadow: var(--shadow); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: .85rem; font-weight: 700; }
+    input, select, textarea {
+      width: 100%; border: 1px solid #eadde0; border-radius: 12px;
+      padding: 13px 14px; font: inherit; background: #fffdfc; outline: none;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--rose); box-shadow: 0 0 0 4px rgba(185,111,123,.1); }
+    textarea { min-height: 120px; resize: vertical; }
+    form .btn { margin-top: 20px; width: 100%; }
+
+    footer { background: #281b20; color: white; padding: 40px 0; text-align: center; }
+    footer .logo { color: white; }
+    footer p { color: #d9c6ca; margin-top: 10px; }
+
+    .float-wa {
+      position: fixed; right: 20px; bottom: 20px; z-index: 40;
+      width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center;
+      background: #25D366; color: white; font-size: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      transition: .3s ease;
+    }
+    .float-wa:hover { transform: scale(1.08); }
+
+    @media (max-width: 850px) {
+      .nav-links { display: none; position: absolute; top: 76px; left: 0; right: 0; background: var(--cream); padding: 20px; flex-direction: column; }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+      .about-grid, .why-grid, .booking-grid { grid-template-columns: 1fr; }
+      .cards, .testimonial-grid { grid-template-columns: 1fr 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .gallery div:first-child { grid-row: span 1; }
+    }
+    @media (max-width: 560px) {
+      .section { padding: 75px 0; }
+      .hero { padding-top: 130px; background-position: 65% center; }
+      .hero h1 { font-size: 4.2rem; }
+      .cards, .testimonial-grid, .gallery, .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .gallery { grid-auto-rows: 260px; }
+      .about-image img { height: 430px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="logo" href="#home">Sowjanya <span>Beautician</span></a>
+      <button class="menu-btn" aria-label="Open menu">☰</button>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#booking">Appointment</a>
+        <a href="https://www.instagram.com/sowji_1122" target="_blank">Instagram</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Beauty • Confidence • Elegance</div>
+          <h1>Sowjanya <span>Beautician</span></h1>
+          <p>Enhancing Your Natural Beauty, One Look at a Time.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#booking">Book an Appointment ✨</a>
+            <a class="btn btn-outline" href="#services">Explore Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=85" alt="Professional beauty styling">
+        </div>
+        <div class="about-copy">
+          <div class="eyebrow">About Sowjanya</div>
+          <h2>Beauty that feels uniquely yours.</h2>
+          <p>At Sowjanya Beautician, every look is thoughtfully created to bring out your natural beauty and confidence. From special occasions to everyday glow-ups, the goal is simple: make you feel beautiful, comfortable, and unforgettable.</p>
+          <p>Located in <strong>Macherla</strong>, Sowjanya offers personalized beauty services with care, creativity, and attention to detail.</p>
+          <div class="signature">With love, Sowjanya ✨</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Our Services</div>
+          <h2>Made for your most beautiful moments.</h2>
+          <p>Choose your look, share your vision, and let every detail be beautifully yours.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="icon">👰</div><h3>Bridal Makeup</h3><p>Elegant, radiant bridal looks designed for your unforgettable day.</p></article>
+          <article class="card"><div class="icon">✨</div><h3>Party Makeup</h3><p>Glamorous makeup looks for celebrations, events, and special occasions.</p></article>
+          <article class="card"><div class="icon">💇‍♀️</div><h3>Hair Styling</h3><p>Beautiful hairstyles tailored to your outfit, face shape, and occasion.</p></article>
+          <article class="card"><div class="icon">🌸</div><h3>Facial & Skincare</h3><p>Relaxing beauty care to help your skin feel refreshed and glowing.</p></article>
+          <article class="card"><div class="icon">🪞</div><h3>Eyebrow & Threading</h3><p>Clean, polished shaping for a naturally defined appearance.</p></article>
+          <article class="card"><div class="icon">🥻</div><h3>Saree Draping</h3><p>Graceful, secure, and occasion-ready saree styling with perfect finishing.</p></article>
+          <article class="card"><div class="icon">🌿</div><h3>Mehendi Services</h3><p>Beautiful mehendi designs for weddings, festivals, and celebrations.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Beauty Gallery</div>
+          <h2>Looks made to be remembered.</h2>
+        </div>
+        <div class="gallery">
+          <div><img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=1000&q=85" alt="Makeup artistry"></div>
+          <div><img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?auto=format&fit=crop&w=900&q=85" alt="Beauty portrait"></div>
+          <div><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85" alt="Elegant fashion look"></div>
+          <div><img src="https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=900&q=85" alt="Beauty flowers and styling"></div>
+          <div><img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=85" alt="Beauty products"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why">
+      <div class="container why-grid">
+        <div>
+          <div class="eyebrow">Why Choose Sowjanya?</div>
+          <h2>Your beauty. Your style. Your confidence.</h2>
+          <p style="color:var(--muted); margin-top:20px;">Every appointment is designed around you — your personality, your features, and the look you want to feel confident wearing.</p>
+        </div>
+        <div class="benefits">
+          <div class="benefit"><div class="check">✓</div><div><h3>Personalized Looks</h3><p>Beauty styling created to match your unique features and vision.</p></div></div>
+          <div class="benefit"><div class="check">✓</div><div><h3>Attention to Detail</h3><p>From the first brushstroke to the final finishing touch.</p></div></div>
+          <div class="benefit"><div class="check">✓</div><div><h3>Professional Care</h3><p>A comfortable and welcoming experience from start to finish.</p></div></div>
+          <div class="benefit"><div class="check">✓</div><div><h3>Confidence First</h3><p>The best beauty look is the one that makes you feel like yourself.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Client Love</div>
+          <h2>Kind words from beautiful clients.</h2>
+        </div>
+        <div class="testimonial-grid">
+          <div class="quote"><p>“I felt so confident and beautiful. The look was exactly what I imagined!”</p><small>— Happy Client</small></div>
+          <div class="quote"><p>“The attention to detail was amazing. Everything looked elegant and perfect.”</p><small>— Special Occasion Client</small></div>
+          <div class="quote"><p>“A warm experience, beautiful styling, and a look that made my day unforgettable.”</p><small>— Beautiful Bride</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="booking">
+      <div class="container booking-grid">
+        <div>
+          <div class="eyebrow">Let's Create Your Look</div>
+          <h2>Ready to feel beautiful?</h2>
+          <p style="color:var(--muted); margin-top:18px;">Book your appointment or contact Sowjanya directly for availability and service details.</p>
+          <div class="contact-list">
+            <div class="contact-item"><div>📞</div><div><strong>Phone</strong><span><a href="tel:+918243675876">8243675876</a></span></div></div>
+            <div class="contact-item"><div>📸</div><div><strong>Instagram</strong><span><a href="https://www.instagram.com/sowji_1122" target="_blank">@sowji_1122</a></span></div></div>
+            <div class="contact-item"><div>📍</div><div><strong>Location</strong><span>Macherla</span></div></div>
+            <div class="contact-item"><div>🕘</div><div><strong>Business Hours</strong><span>9:00 AM – 10:00 PM</span></div></div>
+          </div>
+        </div>
+
+        <form id="appointmentForm">
+          <div class="form-grid">
+            <div class="field"><label for="name">Your Name</label><input id="name" required placeholder="Enter your name"></div>
+            <div class="field"><label for="phone">Phone Number</label><input id="phone" type="tel" required placeholder="Enter your phone"></div>
+            <div class="field"><label for="service">Choose Service</label><select id="service" required><option value="">Select a service</option><option>Bridal Makeup</option><option>Party Makeup</option><option>Hair Styling</option><option>Facial & Skincare</option><option>Eyebrow & Threading</option><option>Saree Draping</option><option>Mehendi Services</option></select></div>
+            <div class="field"><label for="date">Preferred Date</label><input id="date" type="date" required></div>
+            <div class="field full"><label for="message">Message</label><textarea id="message" placeholder="Tell us about your appointment..."></textarea></div>
+          </div>
+          <button class="btn btn-primary" type="submit">Send Appointment Request 💌</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="logo">Sowjanya <span>Beautician</span></div>
+      <p>Beauty is not just a look — it is confidence.</p>
+      <p style="font-size:.8rem; margin-top:20px;">© 2026 Sowjanya Beautician • Macherla</p>
+    </div>
+  </footer>
+
+  <a class="float-wa" href="https://wa.me/918243675876?text=Hi%20Sowjanya%20Beautician%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" aria-label="Chat on WhatsApp">✆</a>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('.nav-links a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const service = document.getElementById('service').value;
+      const date = document.getElementById('date').value;
+      const message = document.getElementById('message').value;
+      const text = `Hi Sowjanya Beautician!%0A%0AAppointment Request:%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AService: ${encodeURIComponent(service)}%0APreferred Date: ${encodeURIComponent(date)}%0AMessage: ${encodeURIComponent(message)}`;
+      window.open(`https://wa.me/918243675876?text=${text}`, '_blank');
+    });
+  </script>
+</body>
+</html>
